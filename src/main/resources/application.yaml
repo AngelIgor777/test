@@ -2,7 +2,7 @@ spring:
   application:
     name: SpringDockerTest
   datasource:
-    url: jdbc:postgresql://192.168.0.1:5432/demo_db
+    url: jdbc:postgresql://192.168.0.101:5432/demo_db
     username: user
     password: user
 
