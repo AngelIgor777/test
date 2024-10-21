@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: SpringDockerTest
+  datasource:
+    url: jdbc:postgresql://localhost:5432/demo_db
+    username: user
+    password: user
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8081
