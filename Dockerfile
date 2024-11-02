@@ -1,15 +1,14 @@
 # Указываем базовый образ с OpenJDK
-FROM openjdk:17-jdk-alpine
+FROM alpine:latest
 
-# Аргумент для указания JAR-файла, который будет копироваться
-ARG JAR_FILE=build/libs/demoSpringDocker1-0.0.1-SNAPSHOT.jar
+RUN apk add git openjdk17
+RUN git clone https://github.com/AngelIgor777/test.git
 
-# Устанавливаем рабочую директорию внутри контейнера
-WORKDIR /javademo
+WORKDIR test
+RUN ./gradlew bootJar -x test
+RUN cp build/libs/*.jar ./app.jar
 
-# Копируем JAR-файл в контейнер
-COPY ${JAR_FILE} app.jar
+EXPOSE 8081
 
-EXPOSE  8080
-# Указываем команду для запуска приложения
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
+
